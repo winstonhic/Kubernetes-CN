@@ -125,11 +125,18 @@ nginx-deployment-148880595-fxcez   1/1       Running   0          2m
 nginx-deployment-148880595-rwovn   1/1       Running   0          2m
 ```
 
+Use vim to change deployments
 ```bash
-
 $ kubectl edit deployments nginx-deployment  # use vim to change deployments
 ```
-
+Change replica by 'scale'
+```bash
+$ kubectl scale --current-replicas=3 --replicas=4 deployment/nginx-deployment 
+```
+Change image of container by 'set image'
+```bash
+$ kubectl set image deployment/nginx_deployment nginx=nginx:1.9.1
+```
 
 ## Delete a Deployment
 

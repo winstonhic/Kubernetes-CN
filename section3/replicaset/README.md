@@ -92,7 +92,12 @@ Events:
 ## check rollout status
 
 ```bash
-kubectl rollout status deployment nginx-deployment-test
+$ kubectl rollout status deployment nginx-deployment-test
+```
+## change images, to watch rollout status immediately
+
+```bash
+$ kubectl set image deployment/nginx-deployment-test nginx=nginx:1.9.0
 ```
 
 rollout history
@@ -117,6 +122,19 @@ Pod Template:
     Mounts:	<none>
   Volumes:	<none>
 
+$ kubectl rollout history deployment nginx-deployment-test --revision 1
+Pod Template:
+  Labels:	app=nginx
+	pod-template-hash=6dd86d77d
+  Containers:
+   nginx:
+    Image:	nginx:1.7.9
+    Port:	80/TCP
+    Host Port:	0/TCP
+    Environment:	<none>
+    Mounts:	<none>
+  Volumes:	<none>
+
 ```
 
 ## rollout undo
@@ -124,4 +142,7 @@ Pod Template:
 ```bash
 $ kubectl rollout undo deployment nginx-deployment-test
 deployment.apps "nginx-deployment-test"
+# rollbask to specific vision
+$ kubectl rollout undo deployment nginx-deployment-test --to-revision=2
+
 ```
