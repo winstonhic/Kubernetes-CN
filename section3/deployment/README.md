@@ -125,6 +125,12 @@ nginx-deployment-148880595-fxcez   1/1       Running   0          2m
 nginx-deployment-148880595-rwovn   1/1       Running   0          2m
 ```
 
+```bash
+
+$ kubectl edit deployments nginx-deployment  # use vim to change deployments
+```
+
+
 ## Delete a Deployment
 
 ```bash
